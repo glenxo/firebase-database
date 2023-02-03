@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/database';
+import './App.css';
+
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCNa-ggZ2_rErdJoEQGciZMBrgLCvyQnuI",
@@ -12,25 +15,29 @@ const firebaseConfig = {
   appId: "1:996609355856:web:ad55641b74bff24e69e155",
   measurementId: "G-Q2H3QS0SBY"
 };
-firebase.initializeApp(firebaseConfig);
 
-const database = firebase.database();
-const ref = database.ref('/');
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+
 
 function InputForm() {
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    ref.push({ inputValue });
+    console.log("Submitted value:", inputValue);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} />
-      <button type="submit">Submit</button>
-    </form>
+    <div className="input-container">
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 }
 
 export default InputForm;
+  
