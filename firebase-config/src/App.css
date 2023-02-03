@@ -1,14 +1,14 @@
 .input-container {
   width: 100%;
   max-height: 100px;
-  max-width: 500px;
+  max-width: 300px;
   padding: 30px 30px;
   background: rgb(123, 15, 145);
   border-radius: 20px;
   box-shadow: 0 4px 4px rgba(0,0,0,0.2);
   display: flex;
-  margin-top: 10%;
-  margin-left: 18%;
+  position: absolute;
+
   align-items: center;
   justify-content: center;
   height: 100vh;
